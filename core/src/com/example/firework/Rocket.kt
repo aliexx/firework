@@ -1,6 +1,5 @@
 package com.example.firework
 
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
@@ -12,18 +11,16 @@ class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, texture: Text
 
     private var isFlying : Boolean
     private var time : Float
-    private var x : Float
-    private var y : Float
+    private var position : Vector2
     private var speed : Vector2
     private var texture : Texture
     private var particles : Array<Particle> = Array()
 
     init {
-        time = MathUtils.random(3f, 4f)  // 3 - 4 секунды
+        time = MathUtils.random(3f, 4f)  // время полета 3 - 4 секунды
         isLive = true
         isFlying = true
-        this.x = x
-        this.y = y
+        position = Vector2(x, y)
         speed = Vector2(speedx, speedy)
         this.texture = texture
         for (i in 1..100) {
@@ -45,14 +42,18 @@ class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, texture: Text
             }
         } else {
             speed.y -= Core.GRAVITY * dt
-            x += speed.x * dt
-            y += speed.y * dt
+            position.add(speed.x * dt, speed.y * dt)
         }
     }
 
     fun draw(sb : SpriteBatch) {
+        if (isFlying) {
+            particles[0].draw(position, sb)
+            return
+        }
+
         for (particle in particles)
-            particle.draw(x, y, sb)
+            particle.draw(position, sb)
     }
 
 }

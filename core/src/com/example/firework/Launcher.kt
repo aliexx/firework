@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Array
 
-const val MAX_ROCKETS = 20
-
 class Launcher (graphics: Graphics) {
 
     var graphics: Graphics
@@ -17,7 +15,7 @@ class Launcher (graphics: Graphics) {
     }
 
     fun update(dt: Float) {
-        if (MathUtils.random.nextInt(50) == 1 && rockets.count() < MAX_ROCKETS) {
+        if (MathUtils.random.nextInt(50) == 1 && rockets.count() < Core.MAX_ROCKETS) {
             rockets.add((Rocket(MathUtils.random(-50f, 50f) + Core.SCREEN_WIDTH / 2,
                                 0f,
                                 MathUtils.random(-50f, 50f),

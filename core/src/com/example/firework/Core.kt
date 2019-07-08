@@ -12,6 +12,8 @@ class Core : ApplicationAdapter() {
         const val SCREEN_HEIGHT  = 768
 
         const val GRAVITY = 10
+
+        const val MAX_ROCKETS = 20
     }
 
     lateinit var sb: SpriteBatch

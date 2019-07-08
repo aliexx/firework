@@ -1,5 +1,6 @@
 package com.example.firework
 
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.utils.Array
@@ -7,11 +8,24 @@ import com.badlogic.gdx.utils.Array
 class Graphics {
     var particles : Array<Texture> = Array()
 
+    private val colors = listOf(
+        Color.BLACK,
+        Color.RED,
+        Color.GREEN,
+        Color.BLUE,
+        Color.CYAN,
+        Color.MAGENTA,
+        Color.YELLOW)
+
     init {
-        var pixmap = Pixmap(1, 1, Pixmap.Format.RGBA8888)
-        pixmap.setColor(0f, 1f, 0f, 0.75f)
-        pixmap.fillCircle(32, 32, 32)
-        val pixmaptex = Texture(pixmap)
+        val pixmap = Pixmap(2, 2, Pixmap.Format.RGBA8888)
+
+        for (color in colors) {
+            pixmap.setColor(color)
+            pixmap.drawRectangle(0, 0, 2, 2)
+            particles.add(Texture(pixmap))
+        }
+
         pixmap.dispose()
     }
 }

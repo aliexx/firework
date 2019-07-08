@@ -6,6 +6,12 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 
 class Core : ApplicationAdapter() {
+
+    companion object {
+        const val SCREEN_WIDTH = 1024
+        const val SCREEN_HEIGHT  = 768
+    }
+
     lateinit var batch: SpriteBatch
     lateinit var graphics : Graphics
 

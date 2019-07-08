@@ -10,6 +10,8 @@ class Core : ApplicationAdapter() {
     companion object {
         const val SCREEN_WIDTH = 1024
         const val SCREEN_HEIGHT  = 768
+
+        const val GRAVITY = 10
     }
 
     lateinit var sb: SpriteBatch

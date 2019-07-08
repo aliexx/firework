@@ -1,6 +1,5 @@
 package com.example.firework
 
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Array
@@ -19,8 +18,10 @@ class Launcher (graphics: Graphics) {
 
     fun update(dt: Float) {
         if (MathUtils.random.nextInt(50) == 1 && rockets.count() < MAX_ROCKETS) {
-            rockets.add((Rocket((MathUtils.random.nextInt(100) + Core.SCREEN_WIDTH / 2 - 50).toFloat(),
+            rockets.add((Rocket(MathUtils.random(-50f, 50f) + Core.SCREEN_WIDTH / 2,
                                 0f,
+                                MathUtils.random(-50f, 50f),
+                                MathUtils.random(150f, 200f),
                                 graphics.particles[MathUtils.random.nextInt(graphics.particles.count() -1 ) + 1])))
         }
         if (rockets.count() == 0) return

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Array
 
-class Rocket (x : Float, y: Float, sb: SpriteBatch, texture: Texture) {
+class Rocket (x : Float, y: Float, texture: Texture) {
     var isLive : Boolean
 
     private var isFlying : Boolean
@@ -13,7 +13,6 @@ class Rocket (x : Float, y: Float, sb: SpriteBatch, texture: Texture) {
     private var x : Float
     private var y : Float
     private var texture : Texture
-    private var sb : SpriteBatch
     private var particles : Array<Particle> = Array()
 
     init {
@@ -23,9 +22,8 @@ class Rocket (x : Float, y: Float, sb: SpriteBatch, texture: Texture) {
         this.x = x
         this.y = y
         this.texture = texture
-        this.sb = sb
         for (i in 1..100) {
-            particles.add(Particle(x, y, sb, texture))
+            particles.add(Particle(x, y, texture))
         }
     }
 

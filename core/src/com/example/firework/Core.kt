@@ -12,22 +12,28 @@ class Core : ApplicationAdapter() {
         const val SCREEN_HEIGHT  = 768
     }
 
-    lateinit var batch: SpriteBatch
+    lateinit var sb: SpriteBatch
     lateinit var graphics : Graphics
+    lateinit var launcher: Launcher
 
     override fun create() {
-        batch = SpriteBatch()
+        sb = SpriteBatch()
         graphics = Graphics()
+        launcher = Launcher(graphics)
     }
 
     override fun render() {
+        launcher.update(Gdx.graphics.getDeltaTime())
+
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        batch.begin()
-        batch.end()
+
+        sb.begin()
+        launcher.draw(sb)
+        sb.end()
     }
 
     override fun dispose() {
-        batch.dispose()
+        sb.dispose()
     }
 }

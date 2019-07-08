@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
 
-class Particle (x : Float, y: Float, sb: SpriteBatch, texture: Texture) {
+class Particle (x : Float, y: Float, texture: Texture) {
 
     var isLive : Boolean
 
@@ -12,7 +12,6 @@ class Particle (x : Float, y: Float, sb: SpriteBatch, texture: Texture) {
     private var x : Float
     private var y : Float
     private var texture : Texture
-    private var sb : SpriteBatch
 
     init {
         time = MathUtils.random(2f * 1000, 3f * 1000)  // 2 - 3 секунды
@@ -20,7 +19,6 @@ class Particle (x : Float, y: Float, sb: SpriteBatch, texture: Texture) {
         this.x = x
         this.y = y
         this.texture = texture
-        this.sb = sb
     }
 
     fun update(dt : Float) {

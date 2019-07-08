@@ -9,14 +9,14 @@ class Particle (x : Float, y: Float, texture: Texture) {
 
     var isLive : Boolean
     var speed : Vector2
-    private var time : Float
+    private var lifetime : Float
     private var x : Float
     private var y : Float
     private var texture : Texture
 
     init {
-        time = MathUtils.random(4f, 5f)  // 2 - 3 секунды
-        speed = Vector2(MathUtils.random(-20f, 20f), MathUtils.random(-20f, 20f))
+        lifetime = MathUtils.random(3f, 5f)  // время жизни частицы 3 - 5 секунд
+        speed = Vector2(MathUtils.random(40f), 0f)
         speed.rotate(MathUtils.random(360f))
         isLive = true
         this.x = x
@@ -25,8 +25,8 @@ class Particle (x : Float, y: Float, texture: Texture) {
     }
 
     fun update(dt : Float) {
-        time -= dt
-        if (time < 0) isLive = false
+        lifetime -= dt
+        if (lifetime < 0) isLive = false
 
         speed.y -= Core.GRAVITY * dt
         x += speed.x * dt
@@ -35,6 +35,8 @@ class Particle (x : Float, y: Float, texture: Texture) {
     }
 
     fun draw(offsetx : Float, offsety : Float, sb : SpriteBatch) {
+        if (lifetime < 1.5)
+            if ((lifetime * 10) < MathUtils.random(lifetime * 10)) return
         sb.draw(texture, offsetx + x, offsety + y)
     }
 }

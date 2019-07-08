@@ -7,9 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 
 class Core : ApplicationAdapter() {
     lateinit var batch: SpriteBatch
+    lateinit var graphics : Graphics
 
     override fun create() {
         batch = SpriteBatch()
+        graphics = Graphics()
     }
 
     override fun render() {

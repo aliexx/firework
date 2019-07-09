@@ -44,10 +44,10 @@ project(":desktop") {
 
 
     dependencies {
-        api project(":core")
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     }
 }
 
@@ -56,8 +56,8 @@ project(":core") {
 
 
     dependencies {
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     }
 }
 

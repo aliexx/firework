@@ -17,13 +17,11 @@ class Core : ApplicationAdapter() {
     }
 
     lateinit var sb: SpriteBatch
-    lateinit var graphics : Graphics
     lateinit var launcher: Launcher
 
     override fun create() {
         sb = SpriteBatch()
-        graphics = Graphics()
-        launcher = Launcher(graphics)
+        launcher = Launcher()
     }
 
     override fun render() {

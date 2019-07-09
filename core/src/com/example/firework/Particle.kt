@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 
-class Particle (x : Float, y: Float, texture: Texture) {
+class Particle (x : Float, y: Float, color: Texture) {
 
     var isLive : Boolean
     var speed : Vector2
     private var lifetime : Float
     private var position : Vector2
-    private var texture : Texture
+    private var color : Texture
 
     init {
         lifetime = MathUtils.random(3f, 5f)  // время жизни частицы 3 - 5 секунд
@@ -19,7 +19,7 @@ class Particle (x : Float, y: Float, texture: Texture) {
         speed.rotate(MathUtils.random(360f))        // и направление
         isLive = true
         position = Vector2(x, y)
-        this.texture = texture
+        this.color = color
     }
 
     fun update(dt : Float) {
@@ -32,8 +32,8 @@ class Particle (x : Float, y: Float, texture: Texture) {
     }
 
     fun draw(offset :Vector2, sb : SpriteBatch) {
-        if (lifetime < 1.5)
+        if (lifetime < 1.5)                   // затухание
             if ((lifetime * 10) < MathUtils.random(lifetime * 10)) return
-        sb.draw(texture, offset.x + position.x, offset.y + position.y)
+        sb.draw(color, offset.x + position.x, offset.y + position.y)
     }
 }

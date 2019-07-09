@@ -6,14 +6,14 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
 
-class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, texture: Texture) {
+class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, color: Texture) {
     var isLive : Boolean
 
     private var isFlying : Boolean
     private var time : Float
     private var position : Vector2
     private var speed : Vector2
-    private var texture : Texture
+    private var color : Texture
     private var particles : Array<Particle> = Array()
 
     init {
@@ -22,9 +22,9 @@ class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, texture: Text
         isFlying = true
         position = Vector2(x, y)
         speed = Vector2(speedx, speedy)
-        this.texture = texture
+        this.color = color
         for (i in 1..100) {
-            particles.add(Particle(0f, 0f, texture))
+            particles.add(Particle(0f, 0f, color))
         }
     }
 

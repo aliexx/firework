@@ -9,9 +9,9 @@ import com.badlogic.gdx.utils.Array
 
 class Launcher {
 
-    var particles : Array<Texture> = Array()
+    var colors : Array<Texture> = Array()
 
-    private val colors = listOf (
+    private val palette = listOf (
             Color.RED,
             Color.GREEN,
             Color.BLUE,
@@ -28,12 +28,12 @@ class Launcher {
     private var rockets : Array<Rocket> = Array()
 
     init {
-        val pixmap = Pixmap(2, 2, Pixmap.Format.RGBA8888)
+        val pixmap = Pixmap(2, 2, Pixmap.Format.RGBA8888)       // частицы 2х2
 
-        for (color in colors) {
+        for (color in palette) {
             pixmap.setColor(color)
             pixmap.drawRectangle(0, 0, 2, 2)
-            particles.add(Texture(pixmap))
+            colors.add(Texture(pixmap))
         }
 
         pixmap.dispose()
@@ -41,11 +41,11 @@ class Launcher {
 
     fun update(dt: Float) {
         if (MathUtils.random.nextInt(50) == 1 && rockets.count() < Core.MAX_ROCKETS) {
-            rockets.add((Rocket(MathUtils.random(-50f, 50f) + Core.SCREEN_WIDTH / 2,
-                                0f,
-                                MathUtils.random(-50f, 50f),
-                                MathUtils.random(150f, 200f),
-                                particles[MathUtils.random.nextInt(particles.count())])))
+            rockets.add((Rocket(MathUtils.random(-50f, 50f) + Core.SCREEN_WIDTH / 2, // середина экрана +/-
+                                0f,                                                  // земля
+                                MathUtils.random(-50f, 50f),                         // скорость x
+                                MathUtils.random(150f, 200f),                        // скорость y
+                                colors[MathUtils.random.nextInt(colors.count())])))  // случайный цвет
         }
         if (rockets.count() == 0) return
 

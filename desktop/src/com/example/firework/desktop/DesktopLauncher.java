@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = Core.SCREEN_WIDTH;
 		config.height = Core.SCREEN_HEIGHT;
+		config.title = "Firework";
 		new LwjglApplication(new Core(), config);
 	}
 }

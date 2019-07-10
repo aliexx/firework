@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array
 
 class Launcher {
 
-    private val colors : Array<Texture> = Array()
+    var colors : Array<Texture> = Array()
 
     private val palette = listOf (
             Color.RED,

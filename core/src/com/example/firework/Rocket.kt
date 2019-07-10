@@ -9,11 +9,12 @@ import com.badlogic.gdx.utils.Array
 class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, color: Texture) {
     var isLive : Boolean
 
+    private val color : Texture
+
     private var isFlying : Boolean
     private var time : Float
     private var position : Vector2
     private var speed : Vector2
-    private var color : Texture
     private var particles : Array<Particle> = Array()
 
     init {

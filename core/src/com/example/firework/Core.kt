@@ -16,8 +16,8 @@ class Core : ApplicationAdapter() {
         const val MAX_ROCKETS = 20
     }
 
-    lateinit var sb: SpriteBatch
-    lateinit var launcher: Launcher
+    private lateinit var sb: SpriteBatch
+    private lateinit var launcher: Launcher
 
     override fun create() {
         sb = SpriteBatch()
@@ -25,7 +25,7 @@ class Core : ApplicationAdapter() {
     }
 
     override fun render() {
-        launcher.update(Gdx.graphics.getDeltaTime())
+        launcher.update(Gdx.graphics.deltaTime)
 
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)

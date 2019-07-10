@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array
 
 class Launcher {
 
-    var colors : Array<Texture> = Array()
+    private val colors : Array<Texture> = Array()
 
     private val palette = listOf (
             Color.RED,
@@ -25,7 +25,7 @@ class Launcher {
             Color.WHITE
             )
 
-    private var rockets : Array<Rocket> = Array()
+    private val rockets : Array<Rocket> = Array()
 
     init {
         val pixmap = Pixmap(2, 2, Pixmap.Format.RGBA8888)       // частицы 2х2

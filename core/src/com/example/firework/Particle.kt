@@ -6,16 +6,16 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 
 class Particle (x : Float, y: Float, color: Texture) {
-
     var isLive : Boolean
-    var speed : Vector2
-    private var lifetime : Float
+
+    private var speed : Vector2 = Vector2(MathUtils.random(40f), 0f)
+    private var lifetime : Float = MathUtils.random(3f, 5f)
     private var position : Vector2
     private var color : Texture
 
     init {
-        lifetime = MathUtils.random(3f, 5f)  // время жизни частицы 3 - 5 секунд
-        speed = Vector2(MathUtils.random(40f), 0f)  // случайная скорость
+        // время жизни частицы 3 - 5 секунд
+        // случайная скорость
         speed.rotate(MathUtils.random(360f))        // и направление
         isLive = true
         position = Vector2(x, y)
@@ -28,7 +28,6 @@ class Particle (x : Float, y: Float, color: Texture) {
 
         speed.y -= Core.GRAVITY * dt
         position.add(speed.x * dt, speed.y * dt)
-
     }
 
     fun draw(offset :Vector2, sb : SpriteBatch) {

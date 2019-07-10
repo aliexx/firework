@@ -24,7 +24,7 @@ class Rocket (x : Float, y: Float, speedx : Float, speedy : Float, color: Textur
         position = Vector2(x, y)
         speed = Vector2(speedx, speedy)
         this.color = color
-        for (i in 1..100) {
+        for (i in 1..(MathUtils.random(100) + 200)) {   // 200 - 300 частиц
             particles.add(Particle(0f, 0f, color))
         }
     }

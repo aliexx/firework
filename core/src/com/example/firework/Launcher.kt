@@ -27,6 +27,8 @@ class Launcher {
 
     private val rockets : Array<Rocket> = Array()
 
+    private var launchTimer : Float = 0f
+
     init {
         val pixmap = Pixmap(2, 2, Pixmap.Format.RGBA8888)       // частицы 2х2
 
@@ -40,13 +42,8 @@ class Launcher {
     }
 
     fun update(dt: Float) {
-        if (MathUtils.random.nextInt(50) == 1 && rockets.count() < Core.MAX_ROCKETS) {
-            rockets.add((Rocket(MathUtils.random(-50f, 50f) + Core.SCREEN_WIDTH / 2, // середина экрана +/-
-                                0f,                                                  // земля
-                                MathUtils.random(-50f, 50f),                         // скорость x
-                                MathUtils.random(150f, 200f),                        // скорость y
-                                colors[MathUtils.random.nextInt(colors.count())])))  // случайный цвет
-        }
+        nextLaunch(dt)
+
         if (rockets.count() == 0) return
 
         for (i in rockets.count() - 1 downTo 0) {
@@ -54,6 +51,20 @@ class Launcher {
             if (!rockets[i].isLive) {
                 rockets.removeIndex(i)
             }
+        }
+    }
+    
+    private fun nextLaunch(dt: Float) {
+        launchTimer -= dt
+        if (launchTimer <= 0f && rockets.count() < Core.MAX_ROCKETS) {
+            rockets.add(Rocket(MathUtils.random(-50f, 50f) + Core.SCREEN_WIDTH / 2, // середина экрана +/-
+                    0f,                                                  // земля
+                    MathUtils.random(-50f, 50f),                         // скорость x
+                    MathUtils.random(150f, 200f),                        // скорость y
+                    colors[MathUtils.random.nextInt(colors.count())]))   // случайный цвет
+
+            launchTimer = (MathUtils.random(40) + 20).toFloat() / 20f
+
         }
     }
 

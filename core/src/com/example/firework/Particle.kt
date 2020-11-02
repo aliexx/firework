@@ -18,7 +18,7 @@ class Particle (x : Float, y: Float, color: Texture) {
     init {
         lifetime = MathUtils.random(3f, 5f)  // время жизни частицы 3 - 5 секунд
         speed = Vector2(MathUtils.random(50f), 0f)  // случайная скорость
-        speed.rotate(MathUtils.random(360f))        // и направление
+        speed.rotateDeg(MathUtils.random(360f))     // и направление
         isLive = true
         position = Vector2(x, y)
         this.color = color

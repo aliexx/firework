@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array
 
 class Launcher {
 
-    private val colors : Array<Texture> = Array()
+    private val colors: Array<Texture> = Array()
 
     private val palette = listOf (
             Color.RED,
@@ -25,7 +25,7 @@ class Launcher {
             Color.WHITE
             )
 
-    private val rockets : Array<Rocket> = Array()
+    private val rockets: Array<Rocket> = Array()
 
     private var launchTimer : Float = 0f
 
@@ -44,7 +44,7 @@ class Launcher {
     fun update(dt: Float) {
         nextLaunch(dt)
 
-        if (rockets.count() == 0) return
+        if (rockets.isEmpty) return
 
         for (i in rockets.count() - 1 downTo 0) {
             rockets[i].update(dt)
@@ -53,7 +53,7 @@ class Launcher {
             }
         }
     }
-    
+
     private fun nextLaunch(dt: Float) {
         launchTimer -= dt
         if (launchTimer <= 0f && rockets.count() < Core.MAX_ROCKETS) {
@@ -64,13 +64,10 @@ class Launcher {
                     colors[MathUtils.random.nextInt(colors.count())]))   // случайный цвет
 
             launchTimer = (MathUtils.random(40) + 20).toFloat() / 20f
-
         }
     }
 
-    fun draw(sb : SpriteBatch) {
-        for (rocket in rockets) {
-            rocket.draw(sb)
-        }
+    fun draw(sb: SpriteBatch) {
+        rockets.forEach {rocket -> rocket.draw(sb)}
     }
 }

@@ -2,6 +2,10 @@
 eclipse.project.name = appName + '-core'
 
 dependencies {
-	api "com.badlogicgames.gdx:gdx:$gdxVersion"
-	api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  api "com.badlogicgames.gdx:gdx:$gdxVersion"
+  api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+  if(enableGraalNative == 'true') {
+    implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
+  }
 }
